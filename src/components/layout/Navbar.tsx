@@ -93,7 +93,7 @@ export default function Navbar() {
         {/* CTA + hamburger */}
         <div className="flex items-center gap-3">
           <button
-            onClick={() => handleNavClick('#contactar')}
+            onClick={() => handleNavClick('#contacto')}
             className="hidden md:inline-flex items-center px-5 py-2 bg-violet-600 text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:bg-violet-700 hover:-translate-y-px cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2"
           >
             Contactar
@@ -141,7 +141,7 @@ export default function Navbar() {
               })}
               <li className="pt-1">
                 <button
-                  onClick={() => handleNavClick('#contactar')}
+                  onClick={() => handleNavClick('#contacto')}
                   className="w-full py-2.5 bg-violet-600 text-white text-sm font-semibold rounded-lg hover:bg-violet-700 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2"
                 >
                   Contactar

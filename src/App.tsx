@@ -1,6 +1,12 @@
+import CustomCursor from './components/animations/CustomCursor';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import CustomCursor from './components/animations/CustomCursor';
+import HeroSection from './components/sections/HeroSection';
+import ProjectsSection from './components/sections/ProjectsSection';
+import StackSection from './components/sections/StackSection';
+import AboutSection from './components/sections/AboutSection';
+import BlogSection from './components/sections/BlogSection';
+import ContactSection from './components/sections/ContactSection';
 
 function App() {
   return (
@@ -9,30 +15,12 @@ function App() {
       <Navbar />
 
       <main className="flex-1 pt-16">
-        {/* Placeholder sections — replace with real content */}
-        <section id="inicio" className="min-h-screen flex items-center justify-center px-6">
-          <p className="text-zinc-400 text-lg">Hero — próximamente</p>
-        </section>
-
-        <section id="proyectos" className="min-h-screen flex items-center justify-center px-6">
-          <p className="text-zinc-400 text-lg">Proyectos — próximamente</p>
-        </section>
-
-        <section id="stack" className="min-h-screen flex items-center justify-center px-6">
-          <p className="text-zinc-400 text-lg">Stack — próximamente</p>
-        </section>
-
-        <section id="sobre-mi" className="min-h-screen flex items-center justify-center px-6">
-          <p className="text-zinc-400 text-lg">Sobre mí — próximamente</p>
-        </section>
-
-        <section id="blog" className="min-h-screen flex items-center justify-center px-6">
-          <p className="text-zinc-400 text-lg">Blog — próximamente</p>
-        </section>
-
-        <section id="contactar" className="min-h-screen flex items-center justify-center px-6">
-          <p className="text-zinc-400 text-lg">Contactar — próximamente</p>
-        </section>
+        <HeroSection />       {/* id="inicio"    */}
+        <ProjectsSection />   {/* id="proyectos" */}
+        <StackSection />      {/* id="stack"     */}
+        <AboutSection />      {/* id="sobre-mi"  */}
+        <BlogSection />       {/* id="blog"      */}
+        <ContactSection />    {/* id="contacto"  */}
       </main>
 
       <Footer />
