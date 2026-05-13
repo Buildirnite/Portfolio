@@ -32,7 +32,9 @@ const socials = [
 export default function Footer() {
   const handleNavClick = (href: string) => {
     const el = document.getElementById(href.slice(1));
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 64;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   };
 
   return (
@@ -70,7 +72,7 @@ export default function Footer() {
                 aria-label={label}
                 target={href.startsWith('mailto') ? undefined : '_blank'}
                 rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                className="p-2 text-zinc-400 hover:text-violet-400 transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-500 focus-visible:outline-offset-2 rounded-md"
+                className="p-3 text-zinc-400 hover:text-violet-400 transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-500 focus-visible:outline-offset-2 rounded-md"
               >
                 <Icon size={20} />
               </a>

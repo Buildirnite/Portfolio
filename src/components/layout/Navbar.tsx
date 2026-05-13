@@ -126,7 +126,7 @@ export default function Navbar() {
             onClick={toggleTheme}
             animate={{ rotate: theme === 'dark' ? 180 : 0 }}
             transition={{ duration: 0.35, ease: 'easeInOut' }}
-            className="p-2 text-zinc-600 dark:text-[#a0a0b0] hover:text-zinc-900 dark:hover:text-[#f0f0f0] cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2 rounded-md"
+            className="p-3 text-zinc-600 dark:text-[#a0a0b0] hover:text-zinc-900 dark:hover:text-[#f0f0f0] cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2 rounded-md"
             aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
           >
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -141,7 +141,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="md:hidden p-2 text-zinc-700 dark:text-[#a0a0b0] hover:text-zinc-900 dark:hover:text-[#f0f0f0] transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2 rounded-md"
+            className="md:hidden p-3 text-zinc-700 dark:text-[#a0a0b0] hover:text-zinc-900 dark:hover:text-[#f0f0f0] transition-colors duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2 rounded-md"
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={menuOpen}
           >

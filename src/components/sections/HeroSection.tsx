@@ -177,7 +177,7 @@ export default function HeroSection() {
                   <span className="font-heading text-2xl font-bold text-violet-600 dark:text-violet-400 leading-none">
                     {value}
                   </span>
-                  <span className="text-[11px] text-zinc-400 dark:text-[#606070] uppercase tracking-wider leading-none mt-1">
+                  <span className="text-xs text-zinc-400 dark:text-[#606070] uppercase tracking-wider leading-none mt-1">
                     {label}
                   </span>
                 </div>

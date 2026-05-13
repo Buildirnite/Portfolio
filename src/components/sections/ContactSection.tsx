@@ -259,7 +259,7 @@ export default function ContactSection() {
 
           {/* ── LEFT: form ──────────────────────────────────────────── */}
           <ScrollReveal direction="right" delay={0.1}>
-            <div className="bg-zinc-50/60 dark:bg-[#1a1030] border border-zinc-200 dark:border-[#2a2040] rounded-2xl p-8">
+            <div className="bg-zinc-50/60 dark:bg-[#1a1030] border border-zinc-200 dark:border-[#2a2040] rounded-2xl p-5 sm:p-8">
               <ContactForm />
             </div>
           </ScrollReveal>

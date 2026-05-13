@@ -36,7 +36,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
       "
     >
       {/* Type badge */}
-      <span className="self-start px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400 border border-violet-200/60 dark:border-violet-800/50 capitalize">
+      <span className="self-start px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400 border border-violet-200/60 dark:border-violet-800/50 capitalize">
         {project.type}
       </span>
 
@@ -55,7 +55,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="px-2 py-0.5 text-[11px] font-medium bg-zinc-50 dark:bg-[#241840] text-zinc-500 dark:text-[#a0a0b0] border border-zinc-200 dark:border-[#2a2040] rounded-full"
+            className="px-2 py-0.5 text-xs font-medium bg-zinc-50 dark:bg-[#241840] text-zinc-500 dark:text-[#a0a0b0] border border-zinc-200 dark:border-[#2a2040] rounded-full"
           >
             {tag}
           </span>
