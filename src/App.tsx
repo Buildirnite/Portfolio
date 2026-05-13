@@ -1,26 +1,38 @@
+import { lazy, Suspense } from 'react';
+import SEO from './components/layout/SEO';
 import CustomCursor from './components/animations/CustomCursor';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import HeroSection from './components/sections/HeroSection';
-import ProjectsSection from './components/sections/ProjectsSection';
-import StackSection from './components/sections/StackSection';
-import AboutSection from './components/sections/AboutSection';
-import BlogSection from './components/sections/BlogSection';
-import ContactSection from './components/sections/ContactSection';
+
+const HeroSection     = lazy(() => import('@/components/sections/HeroSection'));
+const ProjectsSection = lazy(() => import('@/components/sections/ProjectsSection'));
+const StackSection    = lazy(() => import('@/components/sections/StackSection'));
+const AboutSection    = lazy(() => import('@/components/sections/AboutSection'));
+const ContactSection  = lazy(() => import('@/components/sections/ContactSection'));
+
+function SectionsSpinner() {
+  return (
+    <div className="flex items-center justify-center min-h-[60vh]" aria-label="Cargando">
+      <span className="w-8 h-8 rounded-full border-2 border-violet-200 border-t-violet-600 animate-spin" />
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col bg-white text-zinc-900 font-sans">
+    <div className="min-h-screen flex flex-col bg-[#f5f3ff] dark:bg-[#0f0a1e] text-zinc-900 dark:text-[#f0f0f0] font-sans overflow-x-hidden">
+      <SEO />
       <CustomCursor />
       <Navbar />
 
       <main className="flex-1 pt-16">
-        <HeroSection />       {/* id="inicio"    */}
-        <ProjectsSection />   {/* id="proyectos" */}
-        <StackSection />      {/* id="stack"     */}
-        <AboutSection />      {/* id="sobre-mi"  */}
-        <BlogSection />       {/* id="blog"      */}
-        <ContactSection />    {/* id="contacto"  */}
+        <Suspense fallback={<SectionsSpinner />}>
+          <HeroSection />
+          <ProjectsSection />
+          <StackSection />
+          <AboutSection />
+          <ContactSection />
+        </Suspense>
       </main>
 
       <Footer />

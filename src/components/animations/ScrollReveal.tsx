@@ -24,7 +24,7 @@ export default function ScrollReveal({
   duration = 0.5,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '0px 0px -80px 0px' });
+  const inView = useInView(ref, { once: false, margin: '0px 0px -80px 0px' });
 
   const hiddenState = { opacity: 0, ...offsets[direction] };
   const visibleState = { opacity: 1, x: 0, y: 0 };

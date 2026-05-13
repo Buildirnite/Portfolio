@@ -27,14 +27,12 @@ export default function HeroSection() {
   const [displayText, setDisplayText] = useState('');
   const [cursorOn, setCursorOn] = useState(true);
 
-  // Init tsParticles engine exactly once
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     }).then(() => setParticlesReady(true));
   }, []);
 
-  // Typing animation
   useEffect(() => {
     if (displayText.length >= TYPING_FULL_TEXT.length) return;
     const t = setTimeout(
@@ -44,14 +42,16 @@ export default function HeroSection() {
     return () => clearTimeout(t);
   }, [displayText]);
 
-  // Blinking terminal cursor
   useEffect(() => {
     const id = setInterval(() => setCursorOn((v) => !v), CURSOR_BLINK_MS);
     return () => clearInterval(id);
   }, []);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const el = document.getElementById(id);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 64;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   };
 
   const particlesOptions: ISourceOptions = useMemo(
@@ -90,7 +90,7 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center overflow-hidden bg-white"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#f5f3ff] dark:bg-[#0f0a1e]"
     >
       {/* ── Particles background ─────────────────────────────────────── */}
       {particlesReady && (
@@ -101,7 +101,6 @@ export default function HeroSection() {
         />
       )}
 
-      {/* Subtle radial gradient — adds depth without color blocks */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
@@ -119,17 +118,17 @@ export default function HeroSection() {
 
           {/* Tagline */}
           <ScrollReveal direction="up" delay={0}>
-            <span className="font-mono text-violet-600 text-sm font-medium tracking-widest select-none">
+            <span className="font-mono text-violet-600 dark:text-violet-400 text-sm font-medium tracking-widest select-none">
               // desarrollador full-stack
             </span>
           </ScrollReveal>
 
           {/* Typing title */}
           <ScrollReveal direction="up" delay={0.15}>
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-[3.2rem] font-bold leading-tight text-zinc-900 tracking-tight">
+            <h1 className="font-heading text-3xl sm:text-4xl lg:text-[3.2rem] font-bold leading-tight text-zinc-900 dark:text-[#f0f0f0] tracking-tight">
               {displayText}
               <span
-                className="inline-block ml-0.5 text-violet-600"
+                className="inline-block ml-0.5 text-violet-600 dark:text-violet-400"
                 style={{ opacity: cursorOn ? 1 : 0, transition: 'opacity 0.08s' }}
                 aria-hidden="true"
               >
@@ -140,11 +139,12 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <ScrollReveal direction="up" delay={0.3}>
-            <p className="text-zinc-500 text-lg leading-relaxed max-w-[520px]">
-              Ingeniero en Computación apasionado por convertir problemas reales en soluciones
-              digitales elegantes.{' '}
-              <span className="text-zinc-700 font-medium">
-                Del backend al móvil, del dato al modelo de IA.
+            <p className="text-zinc-500 dark:text-[#a0a0b0] text-lg leading-relaxed max-w-[520px]">
+              Egresado de Ingeniería en Informática (Universidad Mayor) con experiencia práctica en el
+              Ministerio del Medio Ambiente. Construyo el stack completo: desde la API REST hasta la
+              app móvil, pasando por la integración de IA.{' '}
+              <span className="text-zinc-700 dark:text-[#f0f0f0] font-medium">
+                Disponible para oportunidades en Santiago.
               </span>
             </p>
           </ScrollReveal>
@@ -154,7 +154,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => scrollTo('proyectos')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-violet-600 text-white text-sm font-semibold rounded-lg hover:bg-violet-700 hover:-translate-y-px transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-violet-600 dark:bg-violet-500 text-white text-sm font-semibold rounded-lg hover:bg-violet-700 dark:hover:bg-violet-600 hover:-translate-y-px transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2"
               >
                 Ver proyectos
                 <ArrowRight size={15} aria-hidden="true" />
@@ -162,7 +162,7 @@ export default function HeroSection() {
 
               <button
                 onClick={() => scrollTo('contacto')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-zinc-800 text-sm font-semibold rounded-lg border-2 border-zinc-300 hover:border-violet-600 hover:text-violet-600 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-zinc-800 dark:text-[#f0f0f0] text-sm font-semibold rounded-lg border-2 border-zinc-300 dark:border-[#2a2040] hover:border-violet-600 dark:hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2"
               >
                 Contactar
               </button>
@@ -171,13 +171,13 @@ export default function HeroSection() {
 
           {/* Stats row */}
           <ScrollReveal direction="up" delay={0.6}>
-            <div className="flex flex-wrap gap-8 pt-1 border-t border-zinc-100">
+            <div className="flex flex-wrap gap-4 sm:gap-8 pt-1 border-t border-zinc-100 dark:border-[#2a2040]">
               {stats.map(({ value, label }) => (
                 <div key={label} className="flex flex-col gap-0.5 pt-4">
-                  <span className="font-heading text-2xl font-bold text-violet-600 leading-none">
+                  <span className="font-heading text-2xl font-bold text-violet-600 dark:text-violet-400 leading-none">
                     {value}
                   </span>
-                  <span className="text-[11px] text-zinc-400 uppercase tracking-wider leading-none mt-1">
+                  <span className="text-[11px] text-zinc-400 dark:text-[#606070] uppercase tracking-wider leading-none mt-1">
                     {label}
                   </span>
                 </div>
@@ -187,6 +187,7 @@ export default function HeroSection() {
         </div>
 
         {/* ── RIGHT: profile card ──────────────────────────────────── */}
+        <div className="hidden lg:block">
         <ScrollReveal direction="left" delay={0.25}>
           <div className="relative max-w-[340px] mx-auto lg:mx-0 lg:ml-auto">
 
@@ -196,40 +197,40 @@ export default function HeroSection() {
               transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
             >
               {/* Card */}
-              <div className="bg-white border border-zinc-200/80 rounded-2xl p-8 shadow-xl shadow-zinc-200/50">
+              <div className="bg-white dark:bg-[#1a1030] border border-zinc-200/80 dark:border-[#2a2040] rounded-2xl p-8 shadow-xl shadow-zinc-200/50 dark:shadow-violet-900/20">
 
                 {/* Avatar + identity */}
                 <div className="flex flex-col items-center gap-3 mb-6">
                   <div className="relative">
-                    <div className="w-20 h-20 rounded-full bg-violet-100 border-2 border-violet-300/60 flex items-center justify-center shadow-md shadow-violet-200/50">
-                      <span className="font-heading text-violet-700 font-bold text-2xl tracking-tight">
+                    <div className="w-20 h-20 rounded-full bg-violet-100 dark:bg-violet-900/30 border-2 border-violet-300/60 dark:border-violet-700/40 flex items-center justify-center shadow-md shadow-violet-200/50 dark:shadow-violet-900/30">
+                      <span className="font-heading text-violet-700 dark:text-violet-400 font-bold text-2xl tracking-tight">
                         RT
                       </span>
                     </div>
                     {/* Available dot */}
                     <span
-                      className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white"
+                      className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#1a1030]"
                       aria-label="Disponible"
                     />
                   </div>
 
                   <div className="text-center">
-                    <p className="font-heading text-zinc-900 font-bold text-xl">Ronald Trejo</p>
-                    <p className="font-mono text-violet-600 text-[13px] mt-0.5">
-                      // ingeniero en computación
+                    <p className="font-heading text-zinc-900 dark:text-[#f0f0f0] font-bold text-xl">Ronald Trejo</p>
+                    <p className="font-mono text-violet-600 dark:text-violet-400 text-[13px] mt-0.5">
+                      // ingeniero en informática
                     </p>
                   </div>
                 </div>
 
                 {/* Divider */}
-                <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent mb-5" />
+                <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-[#2a2040] to-transparent mb-5" />
 
                 {/* Tech stack tags */}
                 <div className="flex flex-wrap gap-2 justify-center">
                   {techTags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-[11px] font-medium bg-zinc-50 text-zinc-600 border border-zinc-200 rounded-full tracking-wide"
+                      className="px-3 py-1 text-[11px] font-medium bg-zinc-50 dark:bg-[#241840] text-zinc-600 dark:text-[#a0a0b0] border border-zinc-200 dark:border-[#2a2040] rounded-full tracking-wide"
                     >
                       {tag}
                     </span>
@@ -239,7 +240,7 @@ export default function HeroSection() {
                 {/* Status line */}
                 <div className="mt-5 flex items-center justify-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-                  <span className="text-xs text-zinc-400">Disponible para proyectos</span>
+                  <span className="text-xs text-zinc-400 dark:text-[#606070]">Disponible para proyectos</span>
                 </div>
               </div>
             </motion.div>
@@ -251,6 +252,7 @@ export default function HeroSection() {
             />
           </div>
         </ScrollReveal>
+        </div>
 
       </div>
     </section>

@@ -1,21 +1,51 @@
+import {
+  SiReact,
+  SiJavascript,
+  SiTypescript,
+  SiTailwindcss,
+  SiVuedotjs,
+  SiLaravel,
+  SiPython,
+  SiFastapi,
+  SiMysql,
+  SiPostman,
+  SiGit,
+  SiDocker,
+  SiLinux,
+  SiAnthropic,
+  SiGithub,
+} from 'react-icons/si';
+import type { IconType } from 'react-icons';
+
+export type SkillLevel = 'Avanzado' | 'Intermedio' | 'Básico';
+
 export interface Skill {
-  name: string
-  level: number
-  category: "frontend" | "backend" | "devops"
+  name: string;
+  icon: IconType;
+  level: SkillLevel;
+  category: 'frontend' | 'backend' | 'devops';
 }
 
 export const skills: Skill[] = [
-  { name: "React", level: 90, category: "frontend" },
-  { name: "React Native", level: 80, category: "frontend" },
-  { name: "JavaScript", level: 85, category: "frontend" },
-  { name: "Tailwind CSS", level: 82, category: "frontend" },
-  { name: "TypeScript", level: 75, category: "frontend" },
-  { name: "Laravel / PHP", level: 88, category: "backend" },
-  { name: "Python / FastAPI", level: 80, category: "backend" },
-  { name: "MySQL", level: 82, category: "backend" },
-  { name: "REST APIs", level: 90, category: "backend" },
-  { name: "Docker", level: 78, category: "devops" },
-  { name: "Git / GitHub", level: 88, category: "devops" },
-  { name: "Claude AI API", level: 75, category: "devops" },
-  { name: "Linux / WSL", level: 80, category: "devops" },
-]
+  // Frontend
+  { name: 'React', icon: SiReact, level: 'Avanzado', category: 'frontend' },
+  { name: 'React Native', icon: SiReact, level: 'Avanzado', category: 'frontend' },
+  { name: 'JavaScript', icon: SiJavascript, level: 'Avanzado', category: 'frontend' },
+  { name: 'TypeScript', icon: SiTypescript, level: 'Intermedio', category: 'frontend' },
+  { name: 'Tailwind CSS', icon: SiTailwindcss, level: 'Avanzado', category: 'frontend' },
+  { name: 'Vue 3', icon: SiVuedotjs, level: 'Intermedio', category: 'frontend' },
+
+  // Backend
+  { name: 'Laravel / PHP', icon: SiLaravel, level: 'Avanzado', category: 'backend' },
+  { name: 'Python', icon: SiPython, level: 'Intermedio', category: 'backend' },
+  { name: 'FastAPI', icon: SiFastapi, level: 'Intermedio', category: 'backend' },
+  { name: 'MySQL', icon: SiMysql, level: 'Avanzado', category: 'backend' },
+  { name: 'REST APIs', icon: SiPostman, level: 'Avanzado', category: 'backend' },
+  { name: 'Git', icon: SiGit, level: 'Avanzado', category: 'backend' },
+
+  // DevOps & IA
+  { name: 'Docker', icon: SiDocker, level: 'Intermedio', category: 'devops' },
+  { name: 'Linux / WSL', icon: SiLinux, level: 'Intermedio', category: 'devops' },
+  { name: 'Claude AI API', icon: SiAnthropic, level: 'Intermedio', category: 'devops' },
+  { name: 'GitHub', icon: SiGithub, level: 'Avanzado', category: 'devops' },
+];

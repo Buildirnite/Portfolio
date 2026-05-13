@@ -81,7 +81,7 @@ function FormField({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-zinc-700">{label}</label>
+      <label className="text-sm font-medium text-zinc-700 dark:text-[#a0a0b0]">{label}</label>
       {children}
       <AnimatePresence>
         {error && (
@@ -103,9 +103,9 @@ function FormField({
 }
 
 const inputBase =
-  'w-full px-4 py-3 text-sm text-zinc-900 bg-white border rounded-lg font-sans transition-colors duration-200 focus:outline-none placeholder:text-zinc-400';
+  'w-full px-4 py-3 text-sm text-zinc-900 dark:text-[#f0f0f0] bg-white dark:bg-[#241840] border rounded-lg font-sans transition-colors duration-200 focus:outline-none placeholder:text-zinc-400 dark:placeholder:text-[#606070]';
 const inputNormal =
-  'border-zinc-200 focus:border-violet-600 focus:ring-2 focus:ring-violet-600/15';
+  'border-zinc-200 dark:border-[#2a2040] focus:border-violet-600 dark:focus:border-violet-400 focus:ring-2 focus:ring-violet-600/15 dark:focus:ring-violet-400/15';
 const inputError =
   'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/15';
 
@@ -137,21 +137,21 @@ function ContactForm() {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className="flex flex-col items-center justify-center gap-4 py-16 text-center"
         >
-          <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center">
+          <div className="w-14 h-14 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 flex items-center justify-center">
             <CheckCircle size={28} className="text-emerald-500" aria-hidden="true" />
           </div>
           <div className="flex flex-col gap-1">
-            <p className="font-heading font-bold text-zinc-900 text-lg">
+            <p className="font-heading font-bold text-zinc-900 dark:text-[#f0f0f0] text-lg">
               ¡Mensaje enviado!
             </p>
-            <p className="text-zinc-500 text-sm">
+            <p className="text-zinc-500 dark:text-[#a0a0b0] text-sm">
               Mensaje enviado, te respondo pronto.
             </p>
           </div>
           <button
             type="button"
             onClick={() => setSent(false)}
-            className="mt-2 text-sm text-violet-600 hover:text-violet-800 font-medium transition-colors duration-150 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2 rounded-sm"
+            className="mt-2 text-sm text-violet-600 dark:text-violet-400 hover:text-violet-800 dark:hover:text-violet-300 font-medium transition-colors duration-150 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2 rounded-sm"
           >
             Enviar otro mensaje
           </button>
@@ -213,7 +213,7 @@ function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-violet-600 text-white text-sm font-semibold rounded-lg hover:bg-violet-700 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2 mt-1"
+            className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-violet-600 dark:bg-violet-500 text-white text-sm font-semibold rounded-lg hover:bg-violet-700 dark:hover:bg-violet-600 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-violet-600 focus-visible:outline-offset-2 mt-1"
           >
             {isSubmitting ? (
               <>
@@ -237,18 +237,18 @@ function ContactForm() {
 
 export default function ContactSection() {
   return (
-    <section id="contacto" className="py-24 bg-white">
+    <section id="contacto" className="py-24 bg-[#f5f3ff] dark:bg-[#0f0a1e]">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Section header */}
         <div className="mb-14">
           <ScrollReveal direction="up" delay={0}>
-            <span className="font-mono text-violet-600 text-sm font-medium tracking-widest">
+            <span className="font-mono text-violet-600 dark:text-violet-400 text-sm font-medium tracking-widest">
               // contacto
             </span>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.1}>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-zinc-900 mt-3 tracking-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-zinc-900 dark:text-[#f0f0f0] mt-3 tracking-tight">
               Hablemos
             </h2>
           </ScrollReveal>
@@ -259,7 +259,7 @@ export default function ContactSection() {
 
           {/* ── LEFT: form ──────────────────────────────────────────── */}
           <ScrollReveal direction="right" delay={0.1}>
-            <div className="bg-zinc-50/60 border border-zinc-200 rounded-2xl p-8">
+            <div className="bg-zinc-50/60 dark:bg-[#1a1030] border border-zinc-200 dark:border-[#2a2040] rounded-2xl p-8">
               <ContactForm />
             </div>
           </ScrollReveal>
@@ -278,21 +278,21 @@ export default function ContactSection() {
                 <motion.div
                   whileHover={{ boxShadow: '0 10px 15px rgba(0,0,0,0.08)' }}
                   transition={{ duration: 0.2 }}
-                  className="flex items-start gap-4 p-5 bg-white rounded-xl border border-zinc-200 border-l-4 border-l-violet-600 shadow-sm cursor-pointer"
+                  className="flex items-start gap-4 p-5 bg-white dark:bg-[#1a1030] rounded-xl border border-zinc-200 dark:border-[#2a2040] border-l-4 border-l-violet-600 dark:border-l-violet-500 shadow-sm cursor-pointer"
                 >
-                  <div className="mt-0.5 text-violet-600 shrink-0">{iconEl}</div>
+                  <div className="mt-0.5 text-violet-600 dark:text-violet-400 shrink-0">{iconEl}</div>
                   <div className="flex flex-col gap-0.5 min-w-0">
-                    <span className="font-mono text-violet-600 text-[11px] font-semibold uppercase tracking-widest">
+                    <span className="font-mono text-violet-600 dark:text-violet-400 text-[11px] font-semibold uppercase tracking-widest">
                       {card.label}
                     </span>
-                    <span className="text-zinc-800 text-sm font-medium truncate">
+                    <span className="text-zinc-800 dark:text-[#f0f0f0] text-sm font-medium truncate">
                       {card.value}
                     </span>
                   </div>
                   {card.external && (
                     <ExternalLink
                       size={14}
-                      className="text-zinc-300 shrink-0 ml-auto mt-0.5"
+                      className="text-zinc-300 dark:text-[#2a2040] shrink-0 ml-auto mt-0.5"
                       aria-hidden="true"
                     />
                   )}

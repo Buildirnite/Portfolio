@@ -5,7 +5,7 @@ import ScrollReveal from '@/components/animations/ScrollReveal';
 // ─── data ─────────────────────────────────────────────────────────────────────
 
 const bio = [
-  'Estudiante de Ingeniería Civil en Computación con una obsesión por construir productos que realmente funcionan. No me conformo con que el código compile — necesito que resuelva problemas reales para personas reales.',
+  'Estudiante de Ingeniería en Informática con una obsesión por construir productos que realmente funcionan. No me conformo con que el código compile — necesito que resuelva problemas reales para personas reales.',
   'Me muevo cómodo en todo el stack: diseño la base de datos, construyo la API, creo el frontend y lo dejo corriendo en Docker. Si hay un modelo de IA que le puede agregar valor al producto, lo integro también.',
   'Creo que el software bien hecho es invisible — el usuario solo ve que las cosas funcionan. Eso es lo que busco en cada proyecto.',
 ];
@@ -22,6 +22,13 @@ const timeline: {
   description: string;
   isCurrent?: boolean;
 }[] = [
+  {
+    year: '2026 (Mar – Abr)',
+    role: 'Práctica Profesional — Desarrollador Full-Stack',
+    company: 'Subsecretaría del Medio Ambiente — SCE',
+    description: 'Implementé mejoras en el backend Laravel/PHP, construí la vista de documentación del sistema SCE, rediseñé modales con Vue 3 + TypeScript y corregí bugs en producción.',
+    isCurrent: true,
+  },
   {
     year: '2026',
     role: 'Portafolio Full Stack',
@@ -42,8 +49,8 @@ const timeline: {
   },
   {
     year: 'En curso',
-    role: 'Ingeniería Civil en Computación',
-    company: 'Universidad',
+    role: 'Ingeniería en Informática',
+    company: 'Universidad Mayor',
     description: 'Formación en sistemas, algoritmos y arquitectura de software.',
     isCurrent: true,
   },
@@ -61,7 +68,7 @@ function TimelineItem({
   isLast: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' });
+  const inView = useInView(ref, { once: false, margin: '0px 0px -40px 0px' });
 
   return (
     <motion.div
@@ -77,11 +84,11 @@ function TimelineItem({
           className={`w-3 h-3 rounded-full border-2 mt-1 z-10 shrink-0 transition-colors duration-300 ${
             item.isCurrent
               ? 'bg-emerald-500 border-emerald-300'
-              : 'bg-violet-600 border-violet-300'
+              : 'bg-violet-600 dark:bg-violet-500 border-violet-300 dark:border-violet-700'
           }`}
         />
         {!isLast && (
-          <div className="w-px flex-1 bg-zinc-200 mt-1.5" />
+          <div className="w-px flex-1 bg-zinc-200 dark:bg-[#2a2040] mt-1.5" />
         )}
       </div>
 
@@ -89,18 +96,18 @@ function TimelineItem({
       <div className={`flex flex-col gap-0.5 ${isLast ? 'pb-0' : 'pb-8'}`}>
         <span
           className={`font-mono text-xs font-semibold tracking-wider ${
-            item.isCurrent ? 'text-emerald-600' : 'text-violet-600'
+            item.isCurrent ? 'text-emerald-600' : 'text-violet-600 dark:text-violet-400'
           }`}
         >
           {item.year}
         </span>
-        <p className="font-heading font-bold text-zinc-900 text-[15px] leading-snug mt-0.5">
+        <p className="font-heading font-bold text-zinc-900 dark:text-[#f0f0f0] text-[15px] leading-snug mt-0.5">
           {item.role}
         </p>
-        <p className="font-mono text-zinc-400 text-xs tracking-wide">
+        <p className="font-mono text-zinc-400 dark:text-[#606070] text-xs tracking-wide">
           {item.company}
         </p>
-        <p className="text-zinc-500 text-sm leading-relaxed mt-1.5">
+        <p className="text-zinc-500 dark:text-[#a0a0b0] text-sm leading-relaxed mt-1.5">
           {item.description}
         </p>
       </div>
@@ -119,21 +126,21 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section id="sobre-mi" className="py-24 bg-white">
+    <section id="sobre-mi" className="py-24 bg-[#f5f3ff] dark:bg-[#0f0a1e]">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Section header */}
         <div className="mb-16">
           <ScrollReveal direction="up" delay={0}>
-            <span className="font-mono text-violet-600 text-sm font-medium tracking-widest">
+            <span className="font-mono text-violet-600 dark:text-violet-400 text-sm font-medium tracking-widest">
               // sobre mí
             </span>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.1}>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-zinc-900 mt-3 tracking-tight">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-zinc-900 dark:text-[#f0f0f0] mt-3 tracking-tight">
               Hola, soy Ronald Trejo
               <span
-                className="text-violet-600 ml-0.5"
+                className="text-violet-600 dark:text-violet-400 ml-0.5"
                 style={{ opacity: cursorOn ? 1 : 0, transition: 'opacity 0.08s' }}
                 aria-hidden="true"
               >
@@ -153,7 +160,7 @@ export default function AboutSection() {
             <div className="flex flex-col gap-5">
               {bio.map((paragraph, i) => (
                 <ScrollReveal key={i} direction="right" delay={i * 0.1}>
-                  <p className="text-zinc-600 text-[1.05rem] leading-relaxed">
+                  <p className="text-zinc-600 dark:text-[#a0a0b0] text-[1.05rem] leading-relaxed">
                     {paragraph}
                   </p>
                 </ScrollReveal>
@@ -163,14 +170,14 @@ export default function AboutSection() {
             {/* Tech tags */}
             <ScrollReveal direction="right" delay={0.35}>
               <div className="flex flex-col gap-3 pt-2">
-                <span className="font-mono text-zinc-400 text-[11px] uppercase tracking-widest">
+                <span className="font-mono text-zinc-400 dark:text-[#606070] text-[11px] uppercase tracking-widest">
                   // stack principal
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {techTags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-xs font-medium text-violet-700 bg-violet-50 border border-violet-200/80 rounded-full"
+                      className="px-3 py-1 text-xs font-medium text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/20 border border-violet-200/80 dark:border-violet-800/50 rounded-full"
                     >
                       {tag}
                     </span>
@@ -183,7 +190,7 @@ export default function AboutSection() {
           {/* ── RIGHT: timeline ─────────────────────────────────────── */}
           <ScrollReveal direction="up" delay={0.05}>
             <div className="flex flex-col gap-0">
-              <span className="font-mono text-zinc-400 text-[11px] uppercase tracking-widest mb-7">
+              <span className="font-mono text-zinc-400 dark:text-[#606070] text-[11px] uppercase tracking-widest mb-7">
                 // trayectoria
               </span>
 

@@ -5,7 +5,6 @@ const navLinks = [
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Stack', href: '#stack' },
   { label: 'Sobre mí', href: '#sobre-mi' },
-  { label: 'Blog', href: '#blog' },
 ];
 
 function GithubIcon({ size = 20 }: { size?: number }) {
