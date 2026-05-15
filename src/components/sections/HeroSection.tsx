@@ -8,11 +8,15 @@ import ScrollReveal from '@/components/animations/ScrollReveal';
 
 // ─── constants ───────────────────────────────────────────────────────────────
 
-const TYPING_FULL_TEXT = 'Construyo software que resuelve';
-const TYPING_SPEED_MS = 65;
 const CURSOR_BLINK_MS = 530;
 
-const techTags = ['React', 'Laravel', 'Python', 'Docker', 'React Native', 'FastAPI'];
+const bio = [
+  'Soy un desarrollador full-stack enfocado en la construcción de aplicaciones end-to-end con Laravel, React, Vue y TypeScript. Cuento con experiencia práctica desarrollando módulos completos desde el modelo de datos y APIs REST hasta la UI final, aplicando patrones como Service Layer, Form Requests y Route Model Binding.',
+  'Mi perfil se complementa con manejo de MySQL, contenedores Docker y flujo Gitflow con code review.',
+  'Actualmente me desempeño como practicante full-stack en el Ministerio del Medio Ambiente, construyendo módulos del Sistema de Compensación de Emisiones bajo metodología Scrum.',
+];
+
+const techTags = ['React', 'Laravel', 'Vue', 'TypeScript', 'Docker', 'MySQL', 'React Native', 'FastAPI'];
 
 const stats: { value: string; label: string }[] = [
   { value: '5', label: 'proyectos en portafolio' },
@@ -24,7 +28,6 @@ const stats: { value: string; label: string }[] = [
 
 export default function HeroSection() {
   const [particlesReady, setParticlesReady] = useState(false);
-  const [displayText, setDisplayText] = useState('');
   const [cursorOn, setCursorOn] = useState(true);
 
   useEffect(() => {
@@ -32,15 +35,6 @@ export default function HeroSection() {
       await loadSlim(engine);
     }).then(() => setParticlesReady(true));
   }, []);
-
-  useEffect(() => {
-    if (displayText.length >= TYPING_FULL_TEXT.length) return;
-    const t = setTimeout(
-      () => setDisplayText(TYPING_FULL_TEXT.slice(0, displayText.length + 1)),
-      TYPING_SPEED_MS
-    );
-    return () => clearTimeout(t);
-  }, [displayText]);
 
   useEffect(() => {
     const id = setInterval(() => setCursorOn((v) => !v), CURSOR_BLINK_MS);
@@ -123,10 +117,10 @@ export default function HeroSection() {
             </span>
           </ScrollReveal>
 
-          {/* Typing title */}
+          {/* Heading */}
           <ScrollReveal direction="up" delay={0.15}>
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-[3.2rem] font-bold leading-tight text-zinc-900 dark:text-[#f0f0f0] tracking-tight">
-              {displayText}
+              Hola, soy Ronald Trejo
               <span
                 className="inline-block ml-0.5 text-violet-600 dark:text-violet-400"
                 style={{ opacity: cursorOn ? 1 : 0, transition: 'opacity 0.08s' }}
@@ -137,8 +131,38 @@ export default function HeroSection() {
             </h1>
           </ScrollReveal>
 
+          {/* Bio */}
+          <div className="flex flex-col gap-4">
+            {bio.map((paragraph, i) => (
+              <ScrollReveal key={i} direction="up" delay={0.25 + i * 0.08}>
+                <p className="text-zinc-500 dark:text-[#a0a0b0] text-[1rem] leading-relaxed max-w-[520px]">
+                  {paragraph}
+                </p>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Tech tags */}
+          <ScrollReveal direction="up" delay={0.5}>
+            <div className="flex flex-col gap-2">
+              <span className="font-mono text-zinc-400 dark:text-[#606070] text-[11px] uppercase tracking-widest">
+                // stack principal
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {techTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-xs font-medium text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/20 border border-violet-200/80 dark:border-violet-800/50 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
           {/* CTA buttons */}
-          <ScrollReveal direction="up" delay={0.3}>
+          <ScrollReveal direction="up" delay={0.65}>
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => scrollTo('proyectos')}
@@ -158,7 +182,7 @@ export default function HeroSection() {
           </ScrollReveal>
 
           {/* Stats row */}
-          <ScrollReveal direction="up" delay={0.45}>
+          <ScrollReveal direction="up" delay={0.8}>
             <div className="flex flex-wrap gap-4 sm:gap-8 pt-1 border-t border-zinc-100 dark:border-[#2a2040]">
               {stats.map(({ value, label }) => (
                 <div key={label} className="flex flex-col gap-0.5 pt-4">
