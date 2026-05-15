@@ -5,9 +5,9 @@ import ScrollReveal from '@/components/animations/ScrollReveal';
 // ─── data ─────────────────────────────────────────────────────────────────────
 
 const bio = [
-  'Estudiante de Ingeniería en Informática con una obsesión por construir productos que realmente funcionan. No me conformo con que el código compile — necesito que resuelva problemas reales para personas reales.',
-  'Me muevo cómodo en todo el stack: diseño la base de datos, construyo la API, creo el frontend y lo dejo corriendo en Docker. Si hay un modelo de IA que le puede agregar valor al producto, lo integro también.',
-  'Creo que el software bien hecho es invisible — el usuario solo ve que las cosas funcionan. Eso es lo que busco en cada proyecto.',
+  'Soy un desarrollador full-stack enfocado en la construcción de aplicaciones end-to-end con Laravel, React, Vue y TypeScript. Cuento con experiencia práctica desarrollando módulos completos desde el modelo de datos y APIs REST hasta la UI final, aplicando patrones como Service Layer, Form Requests y Route Model Binding.',
+  'Mi perfil se complementa con manejo de MySQL, contenedores Docker y flujo Gitflow con code review.',
+  'Actualmente me desempeño como practicante full-stack en el Ministerio del Medio Ambiente, construyendo módulos del Sistema de Compensación de Emisiones bajo metodología Scrum.',
 ];
 
 const techTags = [
