@@ -9,7 +9,7 @@ import ScrollReveal from '@/components/animations/ScrollReveal';
 // ─── constants ───────────────────────────────────────────────────────────────
 
 const TYPING_FULL_TEXT = 'Hola, soy Ronald Trejo';
-const TYPING_SPEED_MS = 75;
+const TYPING_SPEED_MS = 65;
 const CURSOR_BLINK_MS = 530;
 
 const bio = [
