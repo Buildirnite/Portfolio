@@ -4,10 +4,10 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useThemeContext } from '@/context/ThemeContext';
 
 const navLinks = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Stack', href: '#stack' },
   { label: 'Sobre mí', href: '#sobre-mi' },
+  { label: 'Stack', href: '#stack' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Trayectoria', href: '#trayectoria' },
 ];
 
 export default function Navbar() {

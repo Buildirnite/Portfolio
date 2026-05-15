@@ -4,11 +4,12 @@ import CustomCursor from './components/animations/CustomCursor';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
-const HeroSection     = lazy(() => import('@/components/sections/HeroSection'));
-const ProjectsSection = lazy(() => import('@/components/sections/ProjectsSection'));
-const StackSection    = lazy(() => import('@/components/sections/StackSection'));
-const AboutSection    = lazy(() => import('@/components/sections/AboutSection'));
-const ContactSection  = lazy(() => import('@/components/sections/ContactSection'));
+const HeroSection        = lazy(() => import('@/components/sections/HeroSection'));
+const AboutSection       = lazy(() => import('@/components/sections/AboutSection'));
+const StackSection       = lazy(() => import('@/components/sections/StackSection'));
+const ProjectsSection    = lazy(() => import('@/components/sections/ProjectsSection'));
+const TrayectoriaSection = lazy(() => import('@/components/sections/TrayectoriaSection'));
+const ContactSection     = lazy(() => import('@/components/sections/ContactSection'));
 
 function SectionsSpinner() {
   return (
@@ -28,9 +29,10 @@ function App() {
       <main className="flex-1 pt-16">
         <Suspense fallback={<SectionsSpinner />}>
           <HeroSection />
-          <ProjectsSection />
-          <StackSection />
           <AboutSection />
+          <StackSection />
+          <ProjectsSection />
+          <TrayectoriaSection />
           <ContactSection />
         </Suspense>
       </main>
