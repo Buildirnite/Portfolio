@@ -8,6 +8,8 @@ import ScrollReveal from '@/components/animations/ScrollReveal';
 
 // ─── constants ───────────────────────────────────────────────────────────────
 
+const TYPING_FULL_TEXT = 'Hola, soy Ronald Trejo';
+const TYPING_SPEED_MS = 75;
 const CURSOR_BLINK_MS = 530;
 
 const bio = [
@@ -28,6 +30,7 @@ const stats: { value: string; label: string }[] = [
 
 export default function HeroSection() {
   const [particlesReady, setParticlesReady] = useState(false);
+  const [displayText, setDisplayText] = useState('');
   const [cursorOn, setCursorOn] = useState(true);
 
   useEffect(() => {
@@ -35,6 +38,15 @@ export default function HeroSection() {
       await loadSlim(engine);
     }).then(() => setParticlesReady(true));
   }, []);
+
+  useEffect(() => {
+    if (displayText.length >= TYPING_FULL_TEXT.length) return;
+    const t = setTimeout(
+      () => setDisplayText(TYPING_FULL_TEXT.slice(0, displayText.length + 1)),
+      TYPING_SPEED_MS
+    );
+    return () => clearTimeout(t);
+  }, [displayText]);
 
   useEffect(() => {
     const id = setInterval(() => setCursorOn((v) => !v), CURSOR_BLINK_MS);
@@ -120,7 +132,7 @@ export default function HeroSection() {
           {/* Heading */}
           <ScrollReveal direction="up" delay={0.15}>
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-[3.2rem] font-bold leading-tight text-zinc-900 dark:text-[#f0f0f0] tracking-tight">
-              Hola, soy Ronald Trejo
+              {displayText}
               <span
                 className="inline-block ml-0.5 text-violet-600 dark:text-violet-400"
                 style={{ opacity: cursorOn ? 1 : 0, transition: 'opacity 0.08s' }}

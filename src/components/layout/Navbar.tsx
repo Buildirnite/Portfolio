@@ -4,6 +4,7 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useThemeContext } from '@/context/ThemeContext';
 
 const navLinks = [
+  { label: 'Inicio', href: '#inicio' },
   { label: 'Stack', href: '#stack' },
   { label: 'Proyectos', href: '#proyectos' },
   { label: 'Trayectoria', href: '#trayectoria' },
