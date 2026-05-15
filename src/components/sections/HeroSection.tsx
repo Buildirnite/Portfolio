@@ -137,20 +137,8 @@ export default function HeroSection() {
             </h1>
           </ScrollReveal>
 
-          {/* Subtitle */}
-          <ScrollReveal direction="up" delay={0.3}>
-            <p className="text-zinc-500 dark:text-[#a0a0b0] text-lg leading-relaxed max-w-[520px]">
-              Egresado de Ingeniería en Informática (Universidad Mayor) con experiencia práctica en el
-              Ministerio del Medio Ambiente. Construyo el stack completo: desde la API REST hasta la
-              app móvil, pasando por la integración de IA.{' '}
-              <span className="text-zinc-700 dark:text-[#f0f0f0] font-medium">
-                Disponible para oportunidades en Santiago.
-              </span>
-            </p>
-          </ScrollReveal>
-
           {/* CTA buttons */}
-          <ScrollReveal direction="up" delay={0.45}>
+          <ScrollReveal direction="up" delay={0.3}>
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => scrollTo('proyectos')}
@@ -170,7 +158,7 @@ export default function HeroSection() {
           </ScrollReveal>
 
           {/* Stats row */}
-          <ScrollReveal direction="up" delay={0.6}>
+          <ScrollReveal direction="up" delay={0.45}>
             <div className="flex flex-wrap gap-4 sm:gap-8 pt-1 border-t border-zinc-100 dark:border-[#2a2040]">
               {stats.map(({ value, label }) => (
                 <div key={label} className="flex flex-col gap-0.5 pt-4">
